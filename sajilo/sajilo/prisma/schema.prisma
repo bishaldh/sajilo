@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Car {
+  id          String    @id @default(uuid())
+  make        String
+  model       String
+  year        Int
+  type        String
+  transmission String
+  seats       Int
+  pricePerDay Float
+  available   Boolean   @default(true)
+  location    String
+  imageUrl    String
+  description String?
+  features    Json       @default("[]")
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  phone     String?
+  password  String
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Booking {
+  id          String   @id @default(uuid())
+  car         Car      @relation(fields: [carId], references: [id])
+  carId       String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  startDate   DateTime
+  endDate     DateTime
+  totalPrice  Float
+  status      String   // PENDING, CONFIRMED, CANCELLED, COMPLETED
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
