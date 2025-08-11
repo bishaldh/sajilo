@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client/edge';
+import { PrismaClient } from '../app/generated/prisma';
 
 const prisma = new PrismaClient({
   log: ['query', 'info', 'warn', 'error'],
@@ -16,7 +16,6 @@ async function main() {
       name: 'John Doe',
       email: 'john@example.com',
       password: 'password123', // In a real app, hash the password
-      phone: '+977-9841000001',
     },
   });
 
@@ -25,7 +24,6 @@ async function main() {
       name: 'Jane Smith',
       email: 'jane@example.com',
       password: 'password123',
-      phone: '+977-9841000002',
     },
   });
 
@@ -101,10 +99,7 @@ async function main() {
   // Add cars to database
   for (const carData of cars) {
     await prisma.car.create({
-      data: {
-        ...carData,
-        features: JSON.stringify(carData.features),
-      },
+      data: carData,
     });
   }
 

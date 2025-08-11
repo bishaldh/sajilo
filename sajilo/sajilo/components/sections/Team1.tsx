@@ -25,10 +25,10 @@ export default function Team1() {
 								</div>
 								<div className="card-info p-4">
 									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Cody Fisher</h6>
+										<Link className="text-xl-bold neutral-1000" href="#">
+											<h6>Bishal Dahal</h6>
 										</Link>
-										<span className="text-sm-medium neutral-500">CFO (Chief Financial Officer)</span>
+										<span className="text-sm-medium neutral-500">CEO</span>
 									</div>
 									<div className="card-program">
 										<div className="endtime">
@@ -63,10 +63,10 @@ export default function Team1() {
 								</div>
 								<div className="card-info p-4">
 									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Darrell Steward</h6>
+										<Link className="text-xl-bold neutral-1000" href="#">
+											<h6>Mukesh Bista</h6>
 										</Link>
-										<span className="text-sm-medium neutral-500">CEO (Chief Financial Officer)</span>
+										<span className="text-sm-medium neutral-500">Founder</span>
 									</div>
 									<div className="card-program">
 										<div className="endtime">
@@ -101,25 +101,25 @@ export default function Team1() {
 								</div>
 								<div className="card-info p-4">
 									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Ronald Richards</h6>
+										<Link className="text-xl-bold neutral-1000" href="#">
+											<h6>Saujan Adhikari</h6>
 										</Link>
-										<span className="text-sm-medium neutral-500">COO (Chief Financial Officer)</span>
+										<span className="text-sm-medium neutral-500">Manager</span>
 									</div>
 									<div className="card-program">
 										<div className="endtime">
 											<div className="card-author d-flex align-items-center gap-2">
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" />
 												</Link>
 											</div>
 											<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
@@ -139,29 +139,29 @@ export default function Team1() {
 								</div>
 								<div className="card-info p-4">
 									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Jerome Bell</h6>
+										<Link className="text-xl-bold neutral-1000" href="#">
+											<h6>Sarad Bista</h6>
 										</Link>
-										<span className="text-sm-medium neutral-500">CMO (Chief Financial Officer)</span>
+										<span className="text-sm-medium neutral-500">Advisor</span>
 									</div>
 									<div className="card-program">
 										<div className="endtime">
 											<div className="card-author d-flex align-items-center gap-2">
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg"/>
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg"  />
 												</Link>
 											</div>
 											<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Carento" />
+												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" />
 											</Link>
 										</div>
 									</div>
@@ -177,149 +177,36 @@ export default function Team1() {
 								</div>
 								<div className="card-info p-4">
 									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Jerome Bell</h6>
+										<Link className="text-xl-bold neutral-1000" href="#">
+											<h6>Anmol Magar</h6>
 										</Link>
-										<span className="text-sm-medium neutral-500">CMO (Chief Financial Officer)</span>
+										<span className="text-sm-medium neutral-500">Advisor</span>
 									</div>
 									<div className="card-program">
 										<div className="endtime">
 											<div className="card-author d-flex align-items-center gap-2">
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Sajilo" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Sajilo" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Sajilo" />
 												</Link>
 												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Carento" />
+													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Sajilo" />
 												</Link>
 											</div>
 											<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Carento" />
+												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Sajilo" />
 											</Link>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div className="col-lg-3 col-md-6 col-12">
-							<div className="card-news background-card hover-up shadow-2 mb-50">
-								<div className="card-image">
-									<Link href="/dealer-details">
-										<img src="/assets/imgs/team/team-1/portrait-6.png" alt="Carento" />
-									</Link>
-								</div>
-								<div className="card-info p-4">
-									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Jerome Bell</h6>
-										</Link>
-										<span className="text-sm-medium neutral-500">CMO (Chief Financial Officer)</span>
-									</div>
-									<div className="card-program">
-										<div className="endtime">
-											<div className="card-author d-flex align-items-center gap-2">
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Carento" />
-												</Link>
-											</div>
-											<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Carento" />
-											</Link>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="col-lg-3 col-md-6 col-12">
-							<div className="card-news background-card hover-up shadow-2 mb-50">
-								<div className="card-image">
-									<Link href="/dealer-details">
-										<img src="/assets/imgs/team/team-1/portrait-7.png" alt="Carento" />
-									</Link>
-								</div>
-								<div className="card-info p-4">
-									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Cody Fisher</h6>
-										</Link>
-										<span className="text-sm-medium neutral-500">CFO (Chief Financial Officer)</span>
-									</div>
-									<div className="card-program">
-										<div className="endtime">
-											<div className="card-author d-flex align-items-center gap-2">
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Carento" />
-												</Link>
-											</div>
-											<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Carento" />
-											</Link>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="col-lg-3 col-md-6 col-12">
-							<div className="card-news background-card hover-up shadow-2 mb-50">
-								<div className="card-image">
-									<Link href="/dealer-details">
-										<img src="/assets/imgs/team/team-1/portrait-8.png" alt="Carento" />
-									</Link>
-								</div>
-								<div className="card-info p-4">
-									<div className="card-title">
-										<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-											<h6>Cody Fisher</h6>
-										</Link>
-										<span className="text-sm-medium neutral-500">CFO (Chief Financial Officer)</span>
-									</div>
-									<div className="card-program">
-										<div className="endtime">
-											<div className="card-author d-flex align-items-center gap-2">
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Carento" />
-												</Link>
-												<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-													<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Carento" />
-												</Link>
-											</div>
-											<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-												<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Carento" />
-											</Link>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</section>
