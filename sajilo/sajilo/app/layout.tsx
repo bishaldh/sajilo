@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Urbanist } from "next/font/google"
+import Providers from "./Providers"
 import "@/node_modules/react-modal-video/css/modal-video.css"
 import "/public/assets/css/main.css"
 
@@ -22,7 +23,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${urbanist.variable}`}>{children}</body>
+			<body className={`${urbanist.variable}`}>
+				<Providers>
+					{children}
+				</Providers>
+			</body>
 		</html>
 	)
 }

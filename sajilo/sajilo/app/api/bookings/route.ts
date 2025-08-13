@@ -1,15 +1,76 @@
 import { NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
 
-export async function GET() {
+// Define the expected shape of the booking data with car details
+type BookingWithCar = {
+  id: string;
+  startDate: Date;
+  endDate: Date;
+  car: {
+    make: string;
+    model: string;
+    pricePerDay: number;
+    imageUrl: string;
+  };
+};
+
+// Define the shape for the frontend
+type FormattedBooking = {
+  id: string;
+  startDate: Date;
+  endDate: Date;
+  car: {
+    make: string;
+    model: string;
+    price: number;
+    image: string;
+  };
+};
+
+export async function GET(request: Request) {
   try {
+    const { searchParams } = new URL(request.url);
+    const userId = searchParams.get('userId');
+    
+    if (!userId) {
+      return NextResponse.json(
+        { error: 'User ID is required' },
+        { status: 400 }
+      );
+    }
+
+    // Fetch bookings with car details
     const bookings = await prisma.booking.findMany({
-      include: {
-        car: true,
-        user: true,
-      },
-    });
-    return NextResponse.json(bookings);
+      where: { userId },
+      select: {
+        id: true,
+        startDate: true,
+        endDate: true,
+        car: {
+          select: {
+            make: true,
+            model: true,
+            pricePerDay: true,
+            imageUrl: true
+          }
+        }
+      }
+    }) as unknown as BookingWithCar[];
+    
+    // Format the data for the frontend
+    const formattedBookings: FormattedBooking[] = bookings.map(booking => ({
+      id: booking.id,
+      startDate: booking.startDate,
+      endDate: booking.endDate,
+      car: {
+        make: booking.car.make,
+        model: booking.car.model,
+        price: booking.car.pricePerDay,
+        image: booking.car.imageUrl || '/assets/imgs/cars/default.jpg'
+      }
+    }));
+    
+    return NextResponse.json(formattedBookings);
   } catch (error) {
     console.error('Error fetching bookings:', error);
     return NextResponse.json(
@@ -23,47 +84,14 @@ export async function POST(request: Request) {
   try {
     const { carId, userId, startDate, endDate, totalPrice } = await request.json();
     
-    // Validate required fields
     if (!carId || !userId || !startDate || !endDate || !totalPrice) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       );
     }
-
-    // Check if car exists and is available
-    const car = await prisma.car.findUnique({
-      where: { id: carId },
-    });
-
-    if (!car) {
-      return NextResponse.json(
-        { error: 'Car not found' },
-        { status: 404 }
-      );
-    }
-
-    // Check for overlapping bookings
-    const overlappingBooking = await prisma.booking.findFirst({
-      where: {
-        carId,
-        OR: [
-          {
-            startDate: { lte: new Date(endDate) },
-            endDate: { gte: new Date(startDate) },
-          },
-        ],
-        status: { in: ['PENDING', 'CONFIRMED'] },
-      },
-    });
-
-    if (overlappingBooking) {
-      return NextResponse.json(
-        { error: 'Car is not available for the selected dates' },
-        { status: 400 }
-      );
-    }
-
+    
+    // Create new booking
     const booking = await prisma.booking.create({
       data: {
         carId,
@@ -71,15 +99,37 @@ export async function POST(request: Request) {
         startDate: new Date(startDate),
         endDate: new Date(endDate),
         totalPrice,
-        status: 'PENDING',
+        status: 'CONFIRMED'
       },
-      include: {
-        car: true,
-        user: true,
-      },
-    });
-
-    return NextResponse.json(booking, { status: 201 });
+      select: {
+        id: true,
+        startDate: true,
+        endDate: true,
+        car: {
+          select: {
+            make: true,
+            model: true,
+            pricePerDay: true,
+            imageUrl: true
+          }
+        }
+      }
+    }) as unknown as BookingWithCar;
+    
+    // Format the response
+    const formattedBooking: FormattedBooking = {
+      id: booking.id,
+      startDate: booking.startDate,
+      endDate: booking.endDate,
+      car: {
+        make: booking.car.make,
+        model: booking.car.model,
+        price: booking.car.pricePerDay,
+        image: booking.car.imageUrl || '/assets/imgs/cars/default.jpg'
+      }
+    };
+    
+    return NextResponse.json(formattedBooking, { status: 201 });
   } catch (error) {
     console.error('Error creating booking:', error);
     return NextResponse.json(
