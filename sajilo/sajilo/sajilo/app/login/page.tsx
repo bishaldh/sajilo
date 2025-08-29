@@ -75,12 +75,7 @@ export default function Login() {
                       <img src="/assets/imgs/template/popup/google.svg" alt="Google" />
                       <span className="text-sm-bold">Sign in with Google</span>
                     </button>
-                    <Link className="btn btn-login mr-10" href="#">
-                      <img src="/assets/imgs/template/popup/facebook.svg" alt="Carento" />
-                    </Link>
-                    <Link className="btn btn-login" href="#">
-                      <img src="/assets/imgs/template/popup/apple.svg" alt="Carento" />
-                    </Link>
+                   
                   </div>
                   <p className="text-sm-medium neutral-500 text-center mt-70">
                     Don't have an account? <Link className="neutral-1000" href="/register">Register Here!</Link>

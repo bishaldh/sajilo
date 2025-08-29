@@ -188,37 +188,50 @@ function BookNowButton({ car }: { car: any }) {
 
   return (
     <>
+      {/* Enhanced Book Now Button */}
       <button
-        className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        className="mt-8 px-8 py-3 bg-gradient-to-r from-[#3CB371] to-[#1E90FF] text-white font-bold rounded-xl shadow-lg hover:from-[#2E8B57] hover:to-[#187bcd] focus:ring-4 focus:ring-blue-200 transition-all duration-200 text-lg tracking-wide"
         onClick={handleBook}
       >
+        <svg className="inline mr-2 align-middle" width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7v2a7 7 0 0 1-14 0V9a7 7 0 0 1 7-7Zm0 2a5 5 0 0 0-5 5v2a5 5 0 0 0 10 0V9a5 5 0 0 0-5-5Zm-1 11.93V18h2v-4.07a7.001 7.001 0 0 1-2 0Z" fill="currentColor"/></svg>
         Book Now
       </button>
+      {/* Booking Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-            <h2 className="text-xl font-bold mb-4">Book this car</h2>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+          <div className="relative bg-white p-8 rounded-2xl shadow-2xl w-full max-w-md animate-fadeIn">
+            {/* Close Icon */}
+            <button
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 focus:outline-none"
+              onClick={() => setShowModal(false)}
+              aria-label="Close"
+            >
+              <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>
+            </button>
+            <h2 className="text-2xl font-extrabold mb-5 text-[#1E90FF]">Book this car</h2>
             <form onSubmit={handleBookingSubmit}>
-              <label className="block mb-2">Start Date</label>
-              <input type="date" required value={startDate} onChange={e => setStartDate(e.target.value)} className="border rounded px-3 py-2 w-full mb-4" />
-              <label className="block mb-2">End Date</label>
-              <input type="date" required value={endDate} onChange={e => setEndDate(e.target.value)} className="border rounded px-3 py-2 w-full mb-4" />
-              {error && <div className="text-red-500 mb-2">{error}</div>}
-              <div className="flex justify-end gap-2">
-                <button type="button" className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowModal(false)}>Cancel</button>
-                <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded" disabled={loading}>{loading ? "Booking..." : "Confirm Booking"}</button>
+              <label className="block mb-2 text-sm font-semibold text-gray-700">Start Date</label>
+              <input type="date" required value={startDate} onChange={e => setStartDate(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 w-full mb-4 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition" />
+              <label className="block mb-2 text-sm font-semibold text-gray-700">End Date</label>
+              <input type="date" required value={endDate} onChange={e => setEndDate(e.target.value)} className="border border-gray-300 rounded-lg px-3 py-2 w-full mb-4 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 outline-none transition" />
+              {error && <div className="text-red-500 mb-3 text-sm font-medium">{error}</div>}
+              <div className="flex justify-end gap-3 mt-6">
+                <button type="button" className="px-5 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold border border-gray-300 shadow-sm transition" onClick={() => setShowModal(false)}>Cancel</button>
+                <button type="submit" className={`px-6 py-2 rounded-lg font-bold shadow bg-gradient-to-r from-[#3CB371] to-[#1E90FF] text-white hover:from-[#2E8B57] hover:to-[#187bcd] focus:ring-2 focus:ring-blue-200 transition-all duration-150 ${loading ? 'opacity-60 cursor-not-allowed' : ''}`} disabled={loading}>{loading ? "Booking..." : "Confirm Booking"}</button>
               </div>
             </form>
           </div>
         </div>
       )}
+      {/* Booking Success Modal */}
       {success && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm text-center">
-            <h2 className="text-xl font-bold mb-2">Booking Successful!</h2>
-            <p className="mb-4">Your booking has been created.</p>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded" onClick={() => router.push('/dashboard')}>Go to My Rentals</button>
-            <button className="px-4 py-2 bg-gray-300 rounded ml-2" onClick={() => setSuccess(false)}>Close</button>
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-sm text-center animate-fadeIn">
+            <svg className="mx-auto mb-3" width="48" height="48" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#3CB371"/><path d="M8 12.5l2.5 2.5 5-5" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <h2 className="text-2xl font-extrabold mb-2 text-[#3CB371]">Booking Successful!</h2>
+            <p className="mb-5 text-gray-700">Your booking has been created.</p>
+            <button className="px-6 py-2 bg-gradient-to-r from-[#3CB371] to-[#1E90FF] text-white rounded-lg font-bold shadow hover:from-[#2E8B57] hover:to-[#187bcd] focus:ring-2 focus:ring-blue-200 transition-all duration-150" onClick={() => router.push('/dashboard')}>Go to My Rentals</button>
+            <button className="px-5 py-2 bg-gray-100 rounded-lg font-semibold text-gray-700 border border-gray-300 shadow-sm ml-3 hover:bg-gray-200 transition" onClick={() => setSuccess(false)}>Close</button>
           </div>
         </div>
       )}

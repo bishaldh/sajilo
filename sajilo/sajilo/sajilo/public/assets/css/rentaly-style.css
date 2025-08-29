@@ -1,0 +1,51 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+:root {
+    --title-font: "Outfit", Helvetica, Arial, sans-serif;
+    --body-font: "Inter", Helvetica, Arial, sans-serif;
+    --body-font-color: #4D5B7C;
+    --gray-color: #acacac;
+}
+
+body {
+    font-family: var(--body-font);
+    color: var(--body-font-color);
+}
+
+.text-gray { color: #acacac; }
+.menu-col { padding-left: 0; list-style: none; }
+.menu-col li { margin-bottom: 8px; }
+.de-login-menu { text-align: center; }
+.de-menu-profile img { border-radius: 50%; border: 2px solid #eee; width: 80px; height: 80px; object-fit: cover; }
+.de-submenu { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); padding: 24px 0; }
+.d-name h4 { font-family: var(--title-font); font-weight: 600; margin-bottom: 0; }
+.d-line { border-top: 1px solid #eee; margin: 16px 0; }
+.card { border-radius: 12px; }
+.card .card-title { font-family: var(--title-font); font-weight: 600; }
+
+/* Custom Dashboard Sidebar Styles */
+.nav-link-dashboard {
+  color: #4D5B7C;
+  font-weight: 500;
+  font-family: var(--body-font);
+  transition: background 0.2s, color 0.2s;
+  border-radius: 8px;
+}
+.nav-link-dashboard:hover,
+.nav-link-dashboard:focus {
+  background: #fa6a2e15;
+  color: #fa6a2e;
+  text-decoration: none;
+}
+.nav-link-dashboard.active,
+.nav-link-dashboard[aria-current="page"] {
+  background: #fa6a2e;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(250, 106, 46, 0.12);
+}
+.card.shadow-sm {
+  box-shadow: 0 4px 24px 0 rgba(80, 80, 80, 0.10) !important;
+}

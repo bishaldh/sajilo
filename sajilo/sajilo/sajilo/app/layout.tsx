@@ -1,6 +1,10 @@
 import type { Metadata } from "next"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./globals.css";
+import "../public/assets/css/rentaly-style.css";
+import "../public/assets/css/rentaly-coloring.css";
+import "../public/assets/css/dashboard-rentaly.css";
+import "../public/assets/css/dashboard-banner-rentaly.css";
 import { Urbanist } from "next/font/google"
 import Providers from "./Providers"
 import "@/node_modules/react-modal-video/css/modal-video.css"

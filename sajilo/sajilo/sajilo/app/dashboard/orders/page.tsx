@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 import React from "react";
-import Link from "next/link";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
 async function getBookings(userId: string) {
@@ -10,10 +9,10 @@ async function getBookings(userId: string) {
   return res.json();
 }
 
-export default async function DashboardPage() {
+export default async function OrdersPage() {
   const session = await getServerSession(authOptions);
   if (!session || !session.user?.id) {
-    return <div className="container py-12 text-center">You must be logged in to view your rentals.</div>;
+    return <div className="container py-12 text-center">You must be logged in to view your orders.</div>;
   }
 
   let bookings: any[] = [];
@@ -25,39 +24,18 @@ export default async function DashboardPage() {
   }
 
   // Use server's local date for filtering
-  const now = new Date('2025-08-29T17:08:07+05:45');
+  const now = new Date('2025-08-29T17:23:53+05:45');
   const filtered = bookings.filter(
     (booking) => new Date(booking.endDate).setHours(0,0,0,0) >= now.setHours(0,0,0,0)
   );
 
-  // Dashboard widgets (example: total bookings, favorites)
-  const totalBookings = filtered.length;
-  // You can fetch favorites if available; for now, set to 0
-  const totalFavorites = 0;
-
   return (
-    <DashboardLayout pageTitle="Dashboard">
-      <div className="row mb-4">
-        <div className="col-md-6 col-lg-4 mb-4">
-          <div className="card text-center p-4 shadow-sm h-100">
-            <div className="mb-2"><i className="fa fa-calendar fa-2x text-primary"></i></div>
-            <h5 className="mb-1">My Bookings</h5>
-            <div className="display-6 fw-bold">{totalBookings}</div>
-          </div>
-        </div>
-        <div className="col-md-6 col-lg-4 mb-4">
-          <div className="card text-center p-4 shadow-sm h-100">
-            <div className="mb-2"><i className="fa fa-car fa-2x text-success"></i></div>
-            <h5 className="mb-1">My Favorite Cars</h5>
-            <div className="display-6 fw-bold">{totalFavorites}</div>
-          </div>
-        </div>
-      </div>
+    <DashboardLayout pageTitle="My Orders">
       <div className="card p-4 mb-4">
-        <h4 className="mb-4">My Bookings</h4>
+        <h4 className="mb-4">My Orders</h4>
         {error && <div className="text-danger mb-4">{error}</div>}
         {filtered.length === 0 ? (
-          <div className="text-lg">No bookings found.</div>
+          <div className="text-lg">No orders found.</div>
         ) : (
           <div className="row g-4">
             {filtered.map((booking) => (

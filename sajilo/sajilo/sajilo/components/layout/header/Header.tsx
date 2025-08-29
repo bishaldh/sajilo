@@ -65,6 +65,9 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu, handle
 											</Dropdown.Toggle>
 
 											<Dropdown.Menu>
+												<Dropdown.Item as={Link} href="/dashboard">Dashboard</Dropdown.Item>
+												<Dropdown.Item as={Link} href="/profile">Profile</Dropdown.Item>
+												<Dropdown.Divider />
 												<Dropdown.Item onClick={() => signOut()} className="text-danger">
 													Sign Out
 												</Dropdown.Item>
@@ -80,18 +83,19 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu, handle
 												/>
 											</Dropdown.Toggle>
 											<Dropdown.Menu align="end">
+												<Dropdown.Item as={Link} href="/dashboard">Dashboard</Dropdown.Item>
+												<Dropdown.Item as={Link} href="/profile">Profile</Dropdown.Item>
+												<Dropdown.Divider />
 												<Dropdown.Item onClick={() => signOut()} className="text-danger">
 													Sign Out
 												</Dropdown.Item>
 											</Dropdown.Menu>
 										</Dropdown>
 									)}
-									<Dropdown.Item as={Link} href="/dashboard">Dashboard</Dropdown.Item>
-<Dropdown.Item as={Link} href="/profile">Profile</Dropdown.Item>
 								</div>
-								{!session?.user && (
-									<div className="burger-icon-2 burger-icon-white" onClick={handleOffcanvas}>
-										<img src="/assets/imgs/template/icons/menu.svg" alt="Sajilo - Sajilo Car Rental Service" />
+								{session?.user && session.user.role !== 'ADMIN' && (
+									<div className="burger-icon burger-icon-white" onClick={handleOffcanvas} style={{cursor: 'pointer'}} title="Open Dashboard">
+										<img src="/assets/imgs/template/icons/menu.svg" alt="Open Dashboard Sidebar" />
 									</div>
 								)}
 								{!session?.user && (
