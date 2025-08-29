@@ -1,31 +1,25 @@
 // Server Component - data fetching only
-import carsData from '@/util/cars.json';
 import Link from 'next/link';
 import CarDetailsView from './CarDetailsView';
 
-interface CarData {
-  id: number;
-  price: number;
-  duration: string;
-  carType: string;
-  amenities: string;
-  rating: string;
-  fuelType: string;
-  location: string;
-  image: string;
-  name: string;
-  year?: number;
-  transmission?: string;
-  seats?: number;
-}
-
-export default function Page({ params }: { params: { id: string } }) {
-  const car = carsData.find((car: CarData) => car.id.toString() === params.id);
+export default async function Page({ params }: { params: { id: string } }) {
+  let car = null;
+  let error = '';
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/cars/${params.id}`, { cache: 'no-store' });
+    if (res.ok) {
+      car = await res.json();
+    } else {
+      error = 'Car Not Found';
+    }
+  } catch (e) {
+    error = 'Failed to load car details.';
+  }
 
   if (!car) {
     return (
       <div className="container py-96 text-center">
-        <h2 className="mb-20">Car Not Found</h2>
+        <h2 className="mb-20">{error || 'Car Not Found'}</h2>
         <Link href="/cars-list" className="btn btn-primary">
           Browse Available Cars
         </Link>
@@ -33,32 +27,5 @@ export default function Page({ params }: { params: { id: string } }) {
     );
   }
 
-  // Safely extract make and model from name
-  const nameParts = car.name.split(' ');
-  const make = nameParts[0] || 'Unknown';
-  const model = nameParts.slice(1).join(' ') || 'Unknown';
-
-  // Map JSON fields with proper fallbacks
-  const formattedCar = {
-    id: car.id.toString(),
-    make,
-    model,
-    year: car.year ?? 2023, // Nullish coalescing for better fallback
-    type: car.carType,
-    transmission: car.transmission ?? 'Automatic',
-    seats: car.seats ?? 5,
-    pricePerDay: car.price,
-    location: car.location,
-    imageUrl: `/assets/imgs/cars-listing/cars-listing-6/${car.image}`,
-    videoId: 'sample-video-id',
-    rating: car.rating,
-    features: {
-      mileage: '56,500 km',
-      fuelType: car.fuelType,
-      doors: 4,
-      engine: '2.5L'
-    }
-  };
-
-  return <CarDetailsView car={formattedCar} />;
+  return <CarDetailsView car={car} />;
 }

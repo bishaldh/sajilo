@@ -86,7 +86,8 @@ export default function Header2({ scroll, isMobileMenu, handleMobileMenu, handle
 											</Dropdown.Menu>
 										</Dropdown>
 									)}
-									<Link className="btn btn-signin background-brand-2 text-dark" href="#">Add Listing</Link>
+									<Dropdown.Item as={Link} href="/dashboard">Dashboard</Dropdown.Item>
+<Dropdown.Item as={Link} href="/profile">Profile</Dropdown.Item>
 								</div>
 								{!session?.user && (
 									<div className="burger-icon-2 burger-icon-white" onClick={handleOffcanvas}>

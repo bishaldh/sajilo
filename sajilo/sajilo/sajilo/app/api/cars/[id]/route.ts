@@ -36,9 +36,11 @@ export async function PUT(
 ) {
   try {
     const data = await request.json();
+    // Exclude non-updatable fields
+    const { id, createdAt, updatedAt, ...updatableData } = data;
     const updatedCar = await prisma.car.update({
       where: { id: params.id },
-      data,
+      data: updatableData,
     });
     return NextResponse.json(updatedCar);
   } catch (error) {

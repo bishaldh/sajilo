@@ -15,21 +15,33 @@ import { useState, useEffect } from "react";
 export default function CarsList() {
 	const [carsData, setCarsData] = useState<any[]>([]);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState("");
+	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
 		const fetchCars = async () => {
 			try {
+				setLoading(true);
+				setError(null);
+				
 				const res = await fetch("/api/cars");
-				if (!res.ok) throw new Error("Failed to fetch cars");
+				if (!res.ok) {
+					throw new Error(`Failed to fetch cars: ${res.status} ${res.statusText}`);
+				}
+				
 				const data = await res.json();
+				if (!Array.isArray(data)) {
+					throw new Error("Invalid data format received from server");
+				}
+				
 				setCarsData(data);
 			} catch (err: any) {
-				setError(err.message || "Error fetching cars");
+				console.error("Error fetching cars:", err);
+				setError(err.message || "An error occurred while fetching cars. Please try again later.");
 			} finally {
 				setLoading(false);
 			}
 		};
+		
 		fetchCars();
 	}, []);
 
@@ -66,17 +78,41 @@ export default function CarsList() {
 		endItemIndex,
 	} = useCarFilter(carsData);
 
-	if (loading) return <div className="container py-5 text-center"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div></div>;
-	if (error) return <div className="container py-5 text-center text-danger">{error}</div>;
+	if (loading) {
+		return (
+			<div className="container py-12 text-center">
+				<div className="spinner-border text-primary" style={{ width: '3rem', height: '3rem' }} role="status">
+					<span className="visually-hidden">Loading cars...</span>
+				</div>
+				<p className="mt-3">Loading available cars...</p>
+			</div>
+		);
+	}
+
+	if (error) {
+		return (
+			<div className="container py-12 text-center">
+				<div className="alert alert-danger" role="alert">
+					<strong>Error loading cars:</strong> {error}
+				</div>
+				<button 
+					onClick={() => window.location.reload()} 
+					className="btn btn-primary mt-3"
+				>
+					Try Again
+				</button>
+			</div>
+		);
+	}
+
 
 	return (
-		<>
-			<Layout footerStyle={1}>
-				<div>
-					<div className="page-header-2 pt-30 background-body">
-						<div className="custom-container position-relative mx-auto">
-							<div className="bg-overlay rounded-12 overflow-hidden">
-								<img className="w-100 h-100 img-fluid img-banner" src="/assets/imgs/page-header/banner6.png" alt="Carento" />
+		<Layout footerStyle={1}>
+			<div>
+				<div className="page-header-2 pt-30 background-body">
+					<div className="custom-container position-relative mx-auto">
+						<div className="bg-overlay rounded-12 overflow-hidden">
+							<img className="w-100 h-100 img-fluid img-banner" src="/assets/imgs/page-header/banner6.png" alt="Carento" />
 							</div>
 							<div className="container position-absolute z-1 top-50 start-50 pb-70 translate-middle text-center">
 								<span className="text-sm-bold bg-2 px-4 py-3 rounded-12">Find cars for sale and for rent near you</span>
@@ -274,4 +310,5 @@ export default function CarsList() {
 					</section>
 				</div>
 			</Layout>
-		</>
+	);
+}

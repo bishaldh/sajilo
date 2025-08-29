@@ -16,7 +16,7 @@ async function main() {
     data: {
       name: 'John Doe',
       email: 'john@example.com',
-      password: '$2b$10$EXAMPLEHASH', // In a real app, use bcrypt to hash passwords
+      password: '$2b$10$EXAMPLEHASH', 
       phone: '+977-9841000001',
     },
   });

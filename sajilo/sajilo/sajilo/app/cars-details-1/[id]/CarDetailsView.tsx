@@ -2,7 +2,7 @@
 import MyDatePicker from '@/components/elements/MyDatePicker'
 import Layout from "@/components/layout/Layout"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import Marquee from 'react-fast-marquee'
 import ModalVideo from 'react-modal-video'
 import Slider from "react-slick"
@@ -124,13 +124,104 @@ export default function CarDetailsView({ car }: { car: any }) {
                 <p><span className="font-semibold">Location:</span> {car.location}</p>
                 <p><span className="font-semibold">Price per day:</span> NPR {car.pricePerDay.toLocaleString()}</p>
               </div>
-              <button className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                Book Now
-              </button>
+              <BookNowButton car={car} />
             </div>
           </div>
         </div>
       </div>
     </Layout>
   )
+}
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+function BookNowButton({ car }: { car: any }) {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleBook = () => {
+    if (!session) {
+      router.push("/login");
+      return;
+    }
+    if (!session) {
+      router.push("/login");
+      return;
+    }
+    setShowModal(true);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleBookingSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          carId: car.id,
+          userId: session && session.user ? session.user.id : "",
+          startDate,
+          endDate,
+          totalPrice: car.pricePerDay * (Math.ceil((new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000*60*60*24)) || 1)
+        })
+      });
+      if (!res.ok) throw new Error("Booking failed");
+      setSuccess(true);
+      setShowModal(false);
+    } catch (err: any) {
+      setError(err.message || "Booking failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  return (
+    <>
+      <button
+        className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+        onClick={handleBook}
+      >
+        Book Now
+      </button>
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h2 className="text-xl font-bold mb-4">Book this car</h2>
+            <form onSubmit={handleBookingSubmit}>
+              <label className="block mb-2">Start Date</label>
+              <input type="date" required value={startDate} onChange={e => setStartDate(e.target.value)} className="border rounded px-3 py-2 w-full mb-4" />
+              <label className="block mb-2">End Date</label>
+              <input type="date" required value={endDate} onChange={e => setEndDate(e.target.value)} className="border rounded px-3 py-2 w-full mb-4" />
+              {error && <div className="text-red-500 mb-2">{error}</div>}
+              <div className="flex justify-end gap-2">
+                <button type="button" className="px-4 py-2 bg-gray-300 rounded" onClick={() => setShowModal(false)}>Cancel</button>
+                <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded" disabled={loading}>{loading ? "Booking..." : "Confirm Booking"}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {success && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm text-center">
+            <h2 className="text-xl font-bold mb-2">Booking Successful!</h2>
+            <p className="mb-4">Your booking has been created.</p>
+            <button className="px-4 py-2 bg-blue-600 text-white rounded" onClick={() => router.push('/dashboard')}>Go to My Rentals</button>
+            <button className="px-4 py-2 bg-gray-300 rounded ml-2" onClick={() => setSuccess(false)}>Close</button>
+          </div>
+        </div>
+      )}
+    </>
+  );
 }
