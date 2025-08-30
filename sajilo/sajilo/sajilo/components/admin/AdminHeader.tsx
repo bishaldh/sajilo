@@ -1,5 +1,4 @@
 import React from "react";
-import ThemeSwitch from "@/components/elements/ThemeSwitch";
 import Image from "next/image";
 
 export default function AdminHeader() {
@@ -9,11 +8,7 @@ export default function AdminHeader() {
         <Image src="/assets/imgs/template/logo-b.png" alt="Sajilo Logo" width={40} height={40} />
         <span className="heading-6 font-bold tracking-tight text-neutral-1000">Sajilo Admin</span>
       </div>
-      <div className="flex items-center gap-6">
-        <ThemeSwitch />
-        {/* Admin user menu placeholder */}
-        <div className="rounded-full bg-background-brand-2 w-10 h-10 flex items-center justify-center text-color-white font-bold">A</div>
-      </div>
     </header>
   );
 }
+

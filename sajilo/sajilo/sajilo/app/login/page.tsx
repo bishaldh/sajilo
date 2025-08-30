@@ -10,8 +10,19 @@ export default function Login() {
   const router = useRouter();
 
   useEffect(() => {
-    if (session && session.user.role === 'ADMIN') {
-      router.push('/admin');
+    if (session && session.user) {
+      if (typeof window !== 'undefined') {
+        const currentPath = window.location.pathname;
+        if (session.user.email === 'mirebhai@gmail.com') {
+          if (currentPath !== '/admin') {
+            router.push('/admin');
+          }
+        } else {
+          if (currentPath !== '/') {
+            router.push('/');
+          }
+        }
+      }
     }
   }, [session, router]);
 

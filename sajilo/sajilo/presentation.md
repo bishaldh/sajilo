@@ -38,7 +38,7 @@
 
 ## 6. Technologies Used
 - **Frontend:**
-  - React.js (component-based UI)
+  - React.js (component-based UI)![alt text](image.png)
   - Next.js (server-side rendering, routing, API routes)
   - Bootstrap 5 (responsive design, UI components)
 - **Backend:**
@@ -60,7 +60,7 @@
 
 ---
 
-## 8. System Flowchart
+## 8. System Navigation
 - [Insert your system flowchart image or diagram here]
 - Should illustrate user, admin, and owner flows (login, browse, book, manage, etc.)
 
@@ -121,7 +121,7 @@
 
 ---
 
-## 15. Q&A
+## 15. Q&A  `   
 - Thank you for your attention!
 - Questions and feedback are welcome.
 
