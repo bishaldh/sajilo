@@ -3,6 +3,7 @@ import CounterUp from '@/components/elements/CounterUp'
 import Layout from "@/components/layout/Layout"
 import { swiperGroup3, swiperGroupAnimate } from '@/util/swiperOptions'
 import Link from "next/link"
+import Team1 from "@/components/sections/Team1"
 import { useState } from 'react'
 import ModalVideo from 'react-modal-video'
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -162,173 +163,8 @@ export default function AboutUs() {
 							</div>
 						</div>
 					</section>
-					{/* team 1 */}
-					<section className="section-team-1 py-96 background-body border-top border-bottom">
-						<div className="container">
-							<div className="row align-items-center justify-content-center">
-								<div className="col-xl-6 col-lg-7 col-md-9 col-sm-11">
-									<div className="text-center mb-5">
-										<span className="text-xl-medium neutral-500">Awesome Teams</span>
-										<h3 className="section-title neutral-1000">Meet Our Agents</h3>
-									</div>
-								</div>
-							</div>
-							<div className="row mt-50">
-								<div className="col-lg-3 col-md-6 col-12">
-									<div className="card-news background-card hover-up shadow-2 mb-4 mb-lg-0">
-										<div className="card-image">
-											<Link href="/dealer-details">
-												<img src="/assets/imgs/team/team-1/portrait-1.png" alt="Sajilo" />
-											</Link>
-										</div>
-										<div className="card-info p-4">
-											<div className="card-title">
-												<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-													<h6>Bishal Dahal</h6>
-												</Link>
-												<span className="text-sm-medium neutral-500">CEO</span>
-											</div>
-											<div className="card-program">
-												<div className="endtime">
-													<div className="card-author d-flex align-items-center gap-2">
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Sajilo" />
-														</Link>
-													</div>
-													<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-														<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Sajilo" />
-													</Link>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-3 col-md-6 col-12">
-									<div className="card-news background-card hover-up shadow-2 mb-4 mb-lg-0">
-										<div className="card-image">
-											<Link href="/dealer-details">
-												<img src="/assets/imgs/team/team-1/portrait-2.png" alt="Sajilo" />
-											</Link>
-										</div>
-										<div className="card-info p-4">
-											<div className="card-title">
-												<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-													<h6>Darrell Steward</h6>
-												</Link>
-												<span className="text-sm-medium neutral-500">CEO (Chief Financial Officer)</span>
-											</div>
-											<div className="card-program">
-												<div className="endtime">
-													<div className="card-author d-flex align-items-center gap-2">
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Sajilo" />
-														</Link>
-													</div>
-													<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-														<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Sajilo" />
-													</Link>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-3 col-md-6 col-12">
-									<div className="card-news background-card hover-up shadow-2 mb-4 mb-lg-0">
-										<div className="card-image">
-											<Link href="/dealer-details">
-												<img src="/assets/imgs/team/team-1/portrait-3.png" alt="Sajilo" />
-											</Link>
-										</div>
-										<div className="card-info p-4">
-											<div className="card-title">
-												<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-													<h6>Ronald Richards</h6>
-												</Link>
-												<span className="text-sm-medium neutral-500">COO (Chief Financial Officer)</span>
-											</div>
-											<div className="card-program">
-												<div className="endtime">
-													<div className="card-author d-flex align-items-center gap-2">
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Sajilo" />
-														</Link>
-													</div>
-													<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-														<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Sajilo" />
-													</Link>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div className="col-lg-3 col-md-6 col-12">
-									<div className="card-news background-card hover-up shadow-2 mb-4 mb-lg-0">
-										<div className="card-image">
-											<Link href="/dealer-details">
-												<img src="/assets/imgs/team/team-1/portrait-4.png" alt="Sajilo" />
-											</Link>
-										</div>
-										<div className="card-info p-4">
-											<div className="card-title">
-												<Link className="text-xl-bold neutral-1000" href="/dealer-details">
-													<h6>Jerome Bell</h6>
-												</Link>
-												<span className="text-sm-medium neutral-500">CMO (Chief Financial Officer)</span>
-											</div>
-											<div className="card-program">
-												<div className="endtime">
-													<div className="card-author d-flex align-items-center gap-2">
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-1.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-2.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-3.svg" alt="Sajilo" />
-														</Link>
-														<Link href="#" className="rounded-circle background-100 icon-shape icon icon-sm hover-up">
-															<img className="m-0" src="/assets/imgs/team/team-1/icon-4.svg" alt="Sajilo" />
-														</Link>
-													</div>
-													<Link href="/dealer-details" className="rounded-circle background-100 icon-shape icon icon-sm hover-up border icon-shape-arrow">
-														<img className="m-0" src="/assets/imgs/team/team-1/arrow-up-right.svg" alt="Sajilo" />
-													</Link>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
+					<Team1 />
+
 					{/* cta 8*/}
 					<section className="section-cta-7 background-body py-96">
 						<div className="box-cta-6">
@@ -389,7 +225,7 @@ export default function AboutUs() {
 											<div className="mb-4 mb-lg-0 d-block px-lg-5 px-3">
 												<div className="d-flex justify-content-center justify-content-md-start">
 													<h3 className="count neutral-1000"><CounterUp count={45} /></h3>
-													<h3 className="neutral-1000">+</h3>
+													<h3 className="neutral-1000"></h3>
 												</div>
 												<div className="text-md-start text-center">
 													<p className="text-lg-bold neutral-1000">Global</p>
@@ -399,7 +235,7 @@ export default function AboutUs() {
 											<div className="mb-4 mb-lg-0 d-block px-lg-5 px-3">
 												<div className="d-flex justify-content-center justify-content-md-start">
 													<h3 className="count neutral-1000"><CounterUp count={29} /></h3>
-													<h3 className="neutral-1000">K</h3>
+													<h3 className="neutral-1000"></h3>
 												</div>
 												<div className="text-md-start text-center">
 													<p className="text-lg-bold neutral-1000">Destinations</p>
@@ -408,7 +244,7 @@ export default function AboutUs() {
 											</div>
 											<div className="mb-4 mb-lg-0 d-block px-lg-5 px-3">
 												<div className="d-flex justify-content-center justify-content-md-start">
-													<h3 className="count neutral-1000"><CounterUp count={20} /></h3>
+													<h3 className="count neutral-1000"><CounterUp count={5} /></h3>
 													<h3 className="neutral-1000">+</h3>
 												</div>
 												<div className="text-md-start text-center">
@@ -419,7 +255,7 @@ export default function AboutUs() {
 											<div className="mb-4 mb-lg-0 d-block px-lg-5 px-3">
 												<div className="d-flex justify-content-center justify-content-md-start">
 													<h3 className="count neutral-1000"><CounterUp count={168} /></h3>
-													<h3 className="neutral-1000">K</h3>
+													<h3 className="neutral-1000"></h3>
 												</div>
 												<div className="text-md-start text-center">
 													<p className="text-lg-bold neutral-1000">Happy</p>
@@ -428,8 +264,8 @@ export default function AboutUs() {
 											</div>
 											<div className="mb-4 mb-lg-0 d-block px-lg-5 px-3">
 												<div className="d-flex justify-content-center justify-content-md-start">
-													<h3 className="count neutral-1000"><CounterUp count={15} /></h3>
-													<h3 className="neutral-1000">M</h3>
+													<h3 className="count neutral-1000"><CounterUp count={20} /></h3>
+													<h3 className="neutral-1000"></h3>
 												</div>
 												<div className="text-md-start text-center">
 													<p className="text-lg-bold neutral-1000">User</p>

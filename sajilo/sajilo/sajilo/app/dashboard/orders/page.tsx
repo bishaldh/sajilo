@@ -1,30 +1,43 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
-async function getBookings(userId: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/bookings?userId=${userId}`);
-  if (!res.ok) throw new Error("Failed to fetch bookings");
-  return res.json();
-}
+function OrdersPage() {
+  const { data: session, status } = useSession();
+  const [bookings, setBookings] = useState<any[]>([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-export default async function OrdersPage() {
-  const session = await getServerSession(authOptions);
+  useEffect(() => {
+    if (!session || !session.user?.id) return;
+    async function fetchBookings() {
+      setLoading(true);
+      setError("");
+      try {
+        if (!session || !session.user?.id) return;
+        const res = await fetch(`/api/bookings?userId=${session.user.id}`);
+        if (!res.ok) throw new Error("Failed to fetch bookings");
+        setBookings(await res.json());
+      } catch (e: any) {
+        setError(e.message || "Failed to load bookings.");
+        setBookings([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchBookings();
+  }, [session]);
+
+  if (status === "loading") {
+    return <div className="container py-12 text-center">Loading...</div>;
+  }
   if (!session || !session.user?.id) {
     return <div className="container py-12 text-center">You must be logged in to view your orders.</div>;
   }
 
-  let bookings: any[] = [];
-  let error = "";
-  try {
-    bookings = await getBookings(session.user.id);
-  } catch (e: any) {
-    error = e.message || "Failed to load bookings.";
-  }
-
-  // Use server's local date for filtering
-  const now = new Date('2025-08-29T17:23:53+05:45');
+  // Use current local time for filtering
+  const now = new Date("2025-08-30T13:53:55+05:45");
   const filtered = bookings.filter(
     (booking) => new Date(booking.endDate).setHours(0,0,0,0) >= now.setHours(0,0,0,0)
   );
@@ -33,6 +46,7 @@ export default async function OrdersPage() {
     <DashboardLayout pageTitle="My Orders">
       <div className="card p-4 mb-4">
         <h4 className="mb-4">My Orders</h4>
+        {loading && <div>Loading...</div>}
         {error && <div className="text-danger mb-4">{error}</div>}
         {filtered.length === 0 ? (
           <div className="text-lg">No orders found.</div>
@@ -58,3 +72,6 @@ export default async function OrdersPage() {
     </DashboardLayout>
   );
 }
+
+export default OrdersPage;
+

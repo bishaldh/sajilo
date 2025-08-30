@@ -4,29 +4,10 @@ import React from "react";
 import { HiOutlineChartPie, HiOutlineViewGrid, HiOutlineUserGroup, HiOutlineCurrencyDollar, HiOutlinePlus, HiOutlinePencil, HiOutlineTrash, HiOutlineDotsVertical } from "react-icons/hi";
 import Modal from './Modal';
 
-// --- Mock Data (as before) ---
-const mockStats = {
-  totalCars: 120,
-  bookedCars: 45,
-  rentedCars: 30,
-  availableCars: 45,
-  totalIncome: 2500000,
-  totalUsers: 340,
-};
+import { useEffect, useState } from "react";
 
-const mockBookings: Array<{ id: number; car: string; user: string; date: string; status: keyof typeof statusBadgeClass; amount: number }> = [
-  { id: 1, car: "Toyota Corolla", user: "John Doe", date: "2025-08-27", status: "Completed", amount: 5000 },
-  { id: 2, car: "Honda Civic", user: "Jane Smith", date: "2025-08-26", status: "Pending", amount: 3500 },
-  { id: 3, car: "Hyundai i20", user: "Ram Bahadur", date: "2025-08-25", status: "Completed", amount: 4000 },
-  { id: 4, car: "Suzuki Swift", user: "Sita Rai", date: "2025-08-24", status: "Cancelled", amount: 0 },
-];
+// --- Remove mock data. We'll fetch real data below. ---
 
-const mockCars: Array<{ id: number; name: string; status: keyof typeof statusBadgeClass; price: number }> = [
-  { id: 1, name: "Toyota Corolla", status: "Available", price: 5000 },
-  { id: 2, name: "Honda Civic", status: "Rented", price: 3500 },
-  { id: 3, name: "Hyundai i20", status: "Booked", price: 4000 },
-  { id: 4, name: "Suzuki Swift", status: "Available", price: 3000 },
-];
 
 // --- Reusable Components ---
 const statusBadgeClass = {
@@ -43,7 +24,45 @@ const StatusBadge: React.FC<{ status: keyof typeof statusBadgeClass }> = ({ stat
 );
 
 export default function AdminDashboardOverview() {
-  const [isModalOpen, setModalOpen] = React.useState(false);
+  const [bookings, setBookings] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    async function fetchBookings() {
+      setLoading(true);
+      setError("");
+      try {
+        const res = await fetch("/api/bookings");
+        if (!res.ok) throw new Error("Failed to fetch bookings");
+        const data = await res.json();
+        setBookings(data);
+      } catch (e: any) {
+        setError(e.message || "Failed to load bookings");
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchBookings();
+  }, []);
+
+  // Calculate car stats from bookings
+  const carStats: Record<string, { count: number; model: string; make: string; price: number; image: string }> = {};
+  bookings.forEach(b => {
+    const key = b.car.make + ' ' + b.car.model;
+    if (!carStats[key]) {
+      carStats[key] = {
+        count: 1,
+        model: b.car.model,
+        make: b.car.make,
+        price: b.car.price,
+        image: b.car.image
+      };
+    } else {
+      carStats[key].count++;
+    }
+  });
 
   return (
     <div className="container-fluid bg-light min-vh-100 py-4">
@@ -62,7 +81,6 @@ export default function AdminDashboardOverview() {
           </button>
         </div>
       </div>
-
       {/* Stat Cards */}
       <div className="row g-4 mb-4">
         <div className="col-md-3">
@@ -70,10 +88,9 @@ export default function AdminDashboardOverview() {
             <div className="card-body">
               <div className="d-flex align-items-center mb-2">
                 <i className="bi bi-graph-up fs-2 text-primary me-3"></i>
-                <span className="fw-semibold">Active Deals</span>
+                <span className="fw-semibold">Total Bookings</span>
               </div>
-              <h5 className="fw-bold mb-0">Rs200,658 USD</h5>
-              <small className="text-success">+23.85%</small>
+              <h5 className="fw-bold mb-0">{bookings.length}</h5>
             </div>
           </div>
         </div>
@@ -82,10 +99,9 @@ export default function AdminDashboardOverview() {
             <div className="card-body">
               <div className="d-flex align-items-center mb-2">
                 <i className="bi bi-cash-coin fs-2 text-warning me-3"></i>
-                <span className="fw-semibold">Revenue Deals</span>
+                <span className="fw-semibold">Unique Cars</span>
               </div>
-              <h5 className="fw-bold mb-0">Rs76,852 </h5>
-              <small className="text-muted">vs last month: $85,748 USD</small>
+              <h5 className="fw-bold mb-0">{Object.keys(carStats).length}</h5>
             </div>
           </div>
         </div>
@@ -94,10 +110,9 @@ export default function AdminDashboardOverview() {
             <div className="card-body">
               <div className="d-flex align-items-center mb-2">
                 <i className="bi bi-bar-chart-line fs-2 text-info me-3"></i>
-                <span className="fw-semibold">Deals Created</span>
+                <span className="fw-semibold">Most Booked Car</span>
               </div>
-              <h5 className="fw-bold mb-0">Rs200,354 </h5>
-              <small className="text-success">+30.47%</small>
+              <h5 className="fw-bold mb-0">{Object.entries(carStats).sort((a,b)=>b[1].count-a[1].count)[0]?.[0] || '-'}</h5>
             </div>
           </div>
         </div>
@@ -106,72 +121,59 @@ export default function AdminDashboardOverview() {
             <div className="card-body">
               <div className="d-flex align-items-center mb-2">
                 <i className="bi bi-currency-exchange fs-2 text-danger me-3"></i>
-                <span className="fw-semibold">Deals Closing</span>
+                <span className="fw-semibold">Total Users</span>
               </div>
-              <h5 className="fw-bold mb-0">Rs 40,847</h5>
-              <small className="text-danger">-08.55%</small>
+              <h5 className="fw-bold mb-0">{[...new Set(bookings.map(b=>b.user?.id))].length}</h5>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Sales Pipeline & Revenue Forecast */}
-      <div className="row g-4">
-        <div className="col-lg-8">
-          <div className="card shadow-sm border-0 mb-4">
-            <div className="card-header bg-white border-0 fw-bold">Sales Pipeline</div>
-            <div className="card-body">
-              {/* Placeholder for chart/graph, replace with real chart in production */}
-              <img src="/assets/imgs/template/chart-pipeline.png" alt="Sales Pipeline Chart" className="img-fluid" />
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-4">
-          <div className="card shadow-sm border-0 mb-4">
-            <div className="card-header bg-white border-0 fw-bold">Revenue Forecast</div>
-            <div className="card-body text-center">
-              {/* Placeholder for circular progress, replace with real chart in production */}
-              <div className="mb-3">
-                <svg width="120" height="120">
-                  <circle cx="60" cy="60" r="54" stroke="#e9ecef" strokeWidth="12" fill="none" />
-                  <circle cx="60" cy="60" r="54" stroke="#0d6efd" strokeWidth="12" fill="none" strokeDasharray="339.292" strokeDashoffset="125" />
-                  <text x="50%" y="54%" textAnchor="middle" dy=".3em" fontSize="2em" fill="#0d6efd">63%</text>
-                </svg>
-              </div>
-              <div className="row g-2">
-                <div className="col-6">
-                  <div className="small">Marketing Goal</div>
-                  <div className="fw-bold">$5,000/$7,500 USD</div>
-                </div>
-                <div className="col-6">
-                  <div className="small">Teams Goal</div>
-                  <div className="fw-bold">$8,000/$12,500 USD</div>
-                </div>
-                <div className="col-6">
-                  <div className="small">Teams Goal</div>
-                  <div className="fw-bold">$8,000/$12,500 USD</div>
-                </div>
-                <div className="col-6">
-                  <div className="small">Revenue Goal</div>
-                  <div className="fw-bold">$12,000/$25,000 USD</div>
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* Bookings Table */}
+      <div className="card shadow-sm border-0 mb-4">
+        <div className="card-header bg-white border-0 fw-bold">Recent Bookings</div>
+        <div className="card-body">
+          {loading ? (
+            <div>Loading bookings...</div>
+          ) : error ? (
+            <div className="alert alert-danger">{error}</div>
+          ) : (
+            <table className="table table-striped table-hover">
+              <thead className="table-light">
+                <tr>
+                  <th>Car</th>
+                  <th>User</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookings.map(booking => (
+                  <tr key={booking.id}>
+                    <td>{booking.car.make} {booking.car.model}</td>
+                    <td>{booking.user?.name || '-'}</td>
+                    <td>{new Date(booking.startDate).toLocaleDateString()}</td>
+                    <td>{new Date(booking.endDate).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
+      {/* Cars Status */}
       <div className="row g-4">
         <div className="col-lg-4">
           <div className="card shadow-sm border-0 mb-4">
             <div className="card-header bg-white border-0 fw-bold">Cars Status</div>
             <div className="card-body">
-              {mockCars.map((c) => (
-                <div key={c.id} className="d-flex align-items-center justify-content-between p-3 mb-2 bg-light rounded">
+              {Object.entries(carStats).map(([key, c]) => (
+                <div key={key} className="d-flex align-items-center justify-content-between p-3 mb-2 bg-light rounded">
                   <div>
-                    <div className="fw-semibold">{c.name}</div>
+                    <div className="fw-semibold">{c.make} {c.model}</div>
                     <div className="small text-muted">NPR {c.price.toLocaleString()} / day</div>
                   </div>
-                  <StatusBadge status={c.status} />
+                  <span className="badge bg-info">{c.count} bookings</span>
                 </div>
               ))}
             </div>
@@ -181,3 +183,4 @@ export default function AdminDashboardOverview() {
     </div>
   );
 }
+

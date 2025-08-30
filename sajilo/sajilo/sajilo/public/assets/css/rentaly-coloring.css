@@ -1,5 +1,5 @@
 /* Rentaly coloring.css (partial, see original for full) */
 .bg-color, .btn-main, .fa-calendar, .fa-car, .fa-check-circle, .fa-money {
-    color: #fa6a2e !important;
+    color: #70f46d !important;
 }
-.card { border: 1px solid #fa6a2e22; }
+.card { border: 1px solid #70f46d22; }

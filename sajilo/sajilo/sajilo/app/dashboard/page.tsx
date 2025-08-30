@@ -1,39 +1,67 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import React from "react";
-import Link from "next/link";
+"use client";
+import { useEffect, useState } from "react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
-async function getBookings(userId: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ''}/api/bookings?userId=${userId}`);
-  if (!res.ok) throw new Error("Failed to fetch bookings");
-  return res.json();
-}
+export default function DashboardPage() {
+  const [bookings, setBookings] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [userId, setUserId] = useState<string | null>(null);
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
-  if (!session || !session.user?.id) {
-    return <div className="container py-12 text-center">You must be logged in to view your rentals.</div>;
-  }
+  useEffect(() => {
+    // Get user session from a cookie or global context (customize as needed)
+    async function fetchSessionAndBookings() {
+      setLoading(true);
+      setError("");
+      try {
+        // You may want to use a custom endpoint or context for session
+        const sessionRes = await fetch("/api/auth/session");
+        const session = await sessionRes.json();
+        if (!session || !session.user?.id) {
+          setError("You must be logged in to view your rentals.");
+          setBookings([]);
+          setUserId(null);
+          setLoading(false);
+          return;
+        }
+        setUserId(session.user.id);
+        const res = await fetch(`/api/bookings?userId=${session.user.id}`);
+        if (!res.ok) throw new Error("Failed to fetch bookings");
+        setBookings(await res.json());
+      } catch (e: any) {
+        setError(e.message || "Failed to load bookings.");
+        setBookings([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchSessionAndBookings();
+  }, []);
 
-  let bookings: any[] = [];
-  let error = "";
-  try {
-    bookings = await getBookings(session.user.id);
-  } catch (e: any) {
-    error = e.message || "Failed to load bookings.";
-  }
+  const refreshBookings = async () => {
+    if (!userId) return;
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch(`/api/bookings?userId=${userId}`);
+      if (!res.ok) throw new Error("Failed to fetch bookings");
+      setBookings(await res.json());
+    } catch (e: any) {
+      setError(e.message || "Failed to load bookings.");
+      setBookings([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // Use server's local date for filtering
-  const now = new Date('2025-08-29T17:08:07+05:45');
+ 
+  const now = new Date();
   const filtered = bookings.filter(
     (booking) => new Date(booking.endDate).setHours(0,0,0,0) >= now.setHours(0,0,0,0)
   );
 
-  // Dashboard widgets (example: total bookings, favorites)
   const totalBookings = filtered.length;
-  // You can fetch favorites if available; for now, set to 0
-  const totalFavorites = 0;
+  const totalFavorites = 0; // Placeholder, update if you add favorites
 
   return (
     <DashboardLayout pageTitle="Dashboard">
@@ -52,11 +80,18 @@ export default async function DashboardPage() {
             <div className="display-6 fw-bold">{totalFavorites}</div>
           </div>
         </div>
+        <div className="col-md-12 col-lg-4 mb-4 d-flex align-items-center">
+          <button className="btn btn-outline-primary ms-auto" onClick={refreshBookings} disabled={loading}>
+            Refresh Bookings
+          </button>
+        </div>
       </div>
       <div className="card p-4 mb-4">
         <h4 className="mb-4">My Bookings</h4>
         {error && <div className="text-danger mb-4">{error}</div>}
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div>Loading bookings...</div>
+        ) : filtered.length === 0 ? (
           <div className="text-lg">No bookings found.</div>
         ) : (
           <div className="row g-4">

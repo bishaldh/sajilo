@@ -76,7 +76,7 @@ body {
 }
 .dashboard-sidebar .sidebar-nav a:hover,
 .dashboard-sidebar .sidebar-nav a.active {
-    background: #70f46d15;
+    background: #70f46d22;
     color: var(--accent-green);
 }
 .dashboard-sidebar .sidebar-nav a.active {

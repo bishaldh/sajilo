@@ -172,7 +172,7 @@ export default function Team1() {
 							<div className="card-news background-card hover-up shadow-2 mb-50">
 								<div className="card-image">
 									<Link href="/dealer-details">
-										<img src="/assets/imgs/team/team-1/portrait-5.png" alt="Carento" />
+										<img src="/assets/imgs/team/team-1/portrait-6.png" alt="Carento" />
 									</Link>
 								</div>
 								<div className="card-info p-4">

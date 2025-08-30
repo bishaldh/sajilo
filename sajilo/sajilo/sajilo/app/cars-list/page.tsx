@@ -207,7 +207,7 @@ export default function CarsList() {
 												<div className="box-collapse scrollFilter mb-15">
 													<div className="pt-0">
 														<div className="box-map-small">
-															<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5249.611419370571!2d2.3406913487788334!3d48.86191519358772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e18a5f84801%3A0x6eb5daa624bdebd2!2sLes%20Halles%2C%2075001%20Pa%20ri%2C%20Ph%C3%A1p!5e0!3m2!1svi!2s!4v1711728202093!5m2!1svi!2s" width="100%" height={160} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+														<iframe className="h-520 rounded-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d948.0!2d85.3364808!3d27.6900928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19cc4a60df7d%3A0xa3d62c8a38b7e837!2sNAMI%20COLLEGE%20bachelors%20block!5e0!3m2!1sen!2s!4v1698224301123!5m2!1sen!2s" width="100%" height={500} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 														</div>
 													</div>
 												</div>

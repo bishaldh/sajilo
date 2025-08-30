@@ -31,46 +31,83 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
-    
-    if (!userId) {
-      return NextResponse.json(
-        { error: 'User ID is required' },
-        { status: 400 }
-      );
-    }
 
-    // Fetch bookings with car details
-    const bookings = await prisma.booking.findMany({
-      where: { userId },
-      select: {
-        id: true,
-        startDate: true,
-        endDate: true,
-        car: {
-          select: {
-            make: true,
-            model: true,
-            pricePerDay: true,
-            imageUrl: true
+    let bookings;
+    if (userId) {
+      // Fetch bookings for a specific user
+      bookings = await prisma.booking.findMany({
+        where: { userId },
+        select: {
+          id: true,
+          startDate: true,
+          endDate: true,
+          car: {
+            select: {
+              make: true,
+              model: true,
+              pricePerDay: true,
+              imageUrl: true
+            }
           }
         }
-      }
-    }) as unknown as BookingWithCar[];
-    
-    // Format the data for the frontend
-    const formattedBookings: FormattedBooking[] = bookings.map(booking => ({
-      id: booking.id,
-      startDate: booking.startDate,
-      endDate: booking.endDate,
-      car: {
-        make: booking.car.make,
-        model: booking.car.model,
-        price: booking.car.pricePerDay,
-        image: booking.car.imageUrl || '/assets/imgs/cars/default.jpg'
-      }
-    }));
-    
-    return NextResponse.json(formattedBookings);
+      }) as unknown as BookingWithCar[];
+
+      // Format the data for the frontend
+      const formattedBookings: FormattedBooking[] = bookings.map(booking => ({
+        id: booking.id,
+        startDate: booking.startDate,
+        endDate: booking.endDate,
+        car: {
+          make: booking.car.make,
+          model: booking.car.model,
+          price: booking.car.pricePerDay,
+          image: booking.car.imageUrl || '/assets/imgs/cars/default.jpg'
+        }
+      }));
+      return NextResponse.json(formattedBookings);
+    } else {
+      // Admin: Fetch all bookings with car and user details
+      bookings = await prisma.booking.findMany({
+        select: {
+          id: true,
+          startDate: true,
+          endDate: true,
+          car: {
+            select: {
+              make: true,
+              model: true,
+              pricePerDay: true,
+              imageUrl: true
+            }
+          },
+          user: {
+            select: {
+              id: true,
+              name: true,
+              email: true
+            }
+          }
+        }
+      });
+      // Format for admin
+      const formattedBookings = bookings.map((booking: any) => ({
+        id: booking.id,
+        startDate: booking.startDate,
+        endDate: booking.endDate,
+        car: {
+          make: booking.car.make,
+          model: booking.car.model,
+          price: booking.car.pricePerDay,
+          image: booking.car.imageUrl || '/assets/imgs/cars/default.jpg'
+        },
+        user: {
+          id: booking.user.id,
+          name: booking.user.name,
+          email: booking.user.email
+        }
+      }));
+      return NextResponse.json(formattedBookings);
+    }
   } catch (error) {
     console.error('Error fetching bookings:', error);
     return NextResponse.json(
@@ -79,6 +116,7 @@ export async function GET(request: Request) {
     );
   }
 }
+
 
 export async function POST(request: Request) {
   try {

@@ -14,7 +14,7 @@ export default function Services() {
 					<div className="page-header pt-30 background-body">
 						<div className="custom-container position-relative mx-auto">
 							<div className="bg-overlay rounded-12 overflow-hidden">
-								<img className="w-100 h-100 img-banner" src="/assets/imgs/page-header/banner1.png" alt="Carento" />
+								<img className="w-100 h-100 img-banner" src="/assets/imgs/page-header/banner1.png" alt="Sajilo" />
 							</div>
 							<div className="container position-absolute z-1 top-50 start-50 translate-middle">
 								<h2 className="text-white">Our Services</h2>
@@ -23,7 +23,7 @@ export default function Services() {
 							<div className="background-body position-absolute z-1 top-100 start-50 translate-middle px-3 py-2 rounded-12 border d-flex gap-3 @@navigation-page">
 								<Link href="/" className="neutral-700 text-md-medium">Home</Link>
 								<span>
-									<img src="/assets/imgs/template/icons/arrow-right.svg" alt="Carento" />
+									<img src="/assets/imgs/template/icons/arrow-right.svg" alt="Sajilo" />
 								</span>
 								<Link href="#" className="neutral-1000 text-md-bold">Services</Link>
 							</div>
@@ -34,7 +34,7 @@ export default function Services() {
 						<div className="container">
 							<div className="row align-items-end">
 								<div className="col-lg-7">
-									<h3 className="neutral-1000">Comprehensive <span className="text-primary">Car Rental</span> Services to Meet All Your Needs</h3>
+									<h3 className="neutral-1000">Nepal's First <span className="text-primary">Car Rental</span> Services to Meet All Your Needs</h3>
 								</div>
 								<div className="col-lg-5">
 									<p className="text-lg-medium neutral-500">From daily rentals to long-term solutions, we offer a comprehensive range of vehicles and services to suit every need and budget.</p>
@@ -44,7 +44,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-1.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-1.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -62,7 +62,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-2.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-2.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -80,7 +80,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-3.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-3.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -98,7 +98,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-4.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-4.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -116,7 +116,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-5.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-5.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -134,7 +134,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-6.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-6.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -152,7 +152,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-7.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-7.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -170,7 +170,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-8.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-8.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -188,7 +188,7 @@ export default function Services() {
 								<div className="col-lg-4 col-md-6">
 									<div className="card-news background-card hover-up mb-24">
 										<div className="card-image">
-											<img src="/assets/imgs/services/services-list-1/img-9.png" alt="Carento" />
+											<img src="/assets/imgs/services/services-list-1/img-9.png" alt="Sajilo" />
 										</div>
 										<div className="card-info">
 											<div className="card-title mb-3">
@@ -232,9 +232,9 @@ export default function Services() {
 							<div className="row">
 								<div className="col-auto mx-auto wow fadeInUp text-center d-flex flex-column align-items-center justify-content-center">
 									<div className="box-author-testimonials background-100">
-										<img src="/assets/imgs/page/homepage1/testimonial.png" alt="Carento" />
-										<img src="/assets/imgs/page/homepage1/testimonial2.png" alt="Carento" />
-										<img src="/assets/imgs/page/homepage1/testimonial3.png" alt="Carento" />
+										<img src="/assets/imgs/page/homepage1/testimonial.png" alt="Sajilo" />
+										<img src="/assets/imgs/page/homepage1/testimonial2.png" alt="Sajilo" />
+										<img src="/assets/imgs/page/homepage1/testimonial3.png" alt="Sajilo" />
 										Testimonials
 									</div>
 									<h3 className="mt-8 mb-15 neutral-1000">What they say about us?</h3>
@@ -255,13 +255,13 @@ export default function Services() {
 														</div>
 														<div className="card-top pt-40 border-0 mb-0">
 															<div className="card-author">
-																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-1.png" alt="Carento" /></div>
+																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-1.png" alt="Sajilo" /></div>
 																<div className="card-info">
 																	<p className="text-lg-bold neutral-1000">Sophia Moore</p>
 																	<p className="text-md-regular neutral-1000">New York</p>
 																</div>
 															</div>
-															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /></div>
+															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /></div>
 														</div>
 													</div>
 												</SwiperSlide>
@@ -273,13 +273,13 @@ export default function Services() {
 														</div>
 														<div className="card-top pt-40 border-0 mb-0">
 															<div className="card-author">
-																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-2.png" alt="Carento" /></div>
+																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-2.png" alt="Sajilo" /></div>
 																<div className="card-info">
 																	<p className="text-lg-bold neutral-1000">Atend John</p>
 																	<p className="text-md-regular neutral-1000">Paris</p>
 																</div>
 															</div>
-															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /></div>
+															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /></div>
 														</div>
 													</div>
 												</SwiperSlide>
@@ -291,13 +291,13 @@ export default function Services() {
 														</div>
 														<div className="card-top pt-40 border-0 mb-0">
 															<div className="card-author">
-																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-3.png" alt="Carento" /></div>
+																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-3.png" alt="Sajilo" /></div>
 																<div className="card-info">
 																	<p className="text-lg-bold neutral-1000">Sara Mohamed</p>
 																	<p className="text-md-regular neutral-1000">Jakatar</p>
 																</div>
 															</div>
-															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /></div>
+															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /></div>
 														</div>
 													</div>
 												</SwiperSlide>
@@ -309,13 +309,13 @@ export default function Services() {
 														</div>
 														<div className="card-top pt-40 border-0 mb-0">
 															<div className="card-author">
-																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-1.png" alt="Carento" /></div>
+																<div className="card-image"><img src="/assets/imgs/testimonials/testimonials-1/author-1.png" alt="Sajilo" /></div>
 																<div className="card-info">
 																	<p className="text-lg-bold neutral-1000">Sara Mohamed</p>
 																	<p className="text-md-regular neutral-1000">Jakatar</p>
 																</div>
 															</div>
-															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Carento" /></div>
+															<div className="card-rate"><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /><img className="background-brand-2 p-1" src="/assets/imgs/template/icons/star-black.svg" alt="Sajilo" /></div>
 														</div>
 													</div>
 												</SwiperSlide>
@@ -336,10 +336,10 @@ export default function Services() {
 											<Swiper {...swiperGroup1} className="swiper-container swiper-group-1">
 												<div className="swiper-wrapper">
 													<SwiperSlide className="swiper-slide">
-														<img className="rounded-12" src="/assets/imgs/cta/cta-10/img-1.png" alt="Carento" />
+														<img className="rounded-12" src="/assets/imgs/cta/cta-10/img-1.png" alt="Sajilo" />
 													</SwiperSlide>
 													<SwiperSlide className="swiper-slide">
-														<img className="rounded-12" src="/assets/imgs/cta/cta-10/img-1.png" alt="Carento" />
+														<img className="rounded-12" src="/assets/imgs/cta/cta-10/img-1.png" alt="Sajilo" />
 													</SwiperSlide>
 												</div>
 												<div className="position-absolute end-0 bottom-0 p-40">
